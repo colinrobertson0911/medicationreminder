@@ -4,13 +4,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity(name = "Patient")
 public class Patient {
@@ -38,9 +40,10 @@ public class Patient {
 	@Column
 	private int age;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "medicationId")
-	List<Medication> medication;
+//	@OneToMany
+//	@LazyCollection(LazyCollectionOption.FALSE)
+//	@JoinColumn(name = "medicationId")
+//	private List<Medication> medication;
 
 	public Patient(String username, String password, String name, String weight, String height, int age,
 			List<Medication> medication) {
@@ -51,7 +54,7 @@ public class Patient {
 		this.weight = weight;
 		this.height = height;
 		this.age = age;
-		this.medication = medication;
+		//this.medication = medication;
 	}
 
 	public Patient() {
@@ -114,13 +117,13 @@ public class Patient {
 		this.age = age;
 	}
 
-	public List<Medication> getMedication() {
-		return medication;
-	}
-
-	public void setMedication(List<Medication> medication) {
-		this.medication = medication;
-	}
+//	public List<Medication> getMedication() {
+//		return medication;
+//	}
+//
+//	public void setMedication(List<Medication> medication) {
+//		this.medication = medication;
+//	}
 
 	@Override
 	public int hashCode() {
@@ -128,7 +131,7 @@ public class Patient {
 		int result = 1;
 		result = prime * result + age;
 		result = prime * result + ((height == null) ? 0 : height.hashCode());
-		result = prime * result + ((medication == null) ? 0 : medication.hashCode());
+		//result = prime * result + ((medication == null) ? 0 : medication.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + (int) (patientId ^ (patientId >>> 32));
@@ -153,11 +156,11 @@ public class Patient {
 				return false;
 		} else if (!height.equals(other.height))
 			return false;
-		if (medication == null) {
-			if (other.medication != null)
-				return false;
-		} else if (!medication.equals(other.medication))
-			return false;
+//		if (medication == null) {
+//			if (other.medication != null)
+//				return false;
+//		} else if (!medication.equals(other.medication))
+//			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -186,7 +189,7 @@ public class Patient {
 	@Override
 	public String toString() {
 		return "Patient [patientId=" + patientId + ", username=" + username + ", password=" + password + ", name="
-				+ name + ", weight=" + weight + ", height=" + height + ", age=" + age + ", medication=" + medication
+				+ name + ", weight=" + weight + ", height=" + height + ", age=" + age + ", medication=" //+ medication
 				+ "]";
 	}
 

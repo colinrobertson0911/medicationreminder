@@ -8,7 +8,10 @@ import com.fdmgroup.medicationReminder.model.Medication;
 public interface MedicationDao extends JpaRepository<Medication, Long> {
 
 	Medication findByNameAndDosage(@Param("name") String name, @Param("dosage") int dosage);
-	
+
+	Medication findByMedicationId(@Param("medicationId")long medicationId);
+
+	Medication findByName(@Param("name")String name);
 	
 
 	

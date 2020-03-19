@@ -142,6 +142,8 @@ public class Medication {
 		this.refill = refill;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -206,7 +208,5 @@ public class Medication {
 				+ condition + ", timesAWeek=" + timesAWeek + ", timesADay=" + timesADay + ", timeToTake=" + timeToTake
 				+ ", quantity=" + quantity + ", pillsLeft=" + pillsLeft + ", refill=" + refill + "]";
 	}
-
-	
 
 }
