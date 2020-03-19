@@ -25,23 +25,23 @@ class MedicationServiceTest {
 	public void test_ThatMedicationCanBeCreated() {
 		Medication medication = new Medication();
 		medication.setName("Meloxicam");
-		medication.setDosage(30);
+		medication.setDosage("30mg");
 		medication.setCondition(null);
 		medication.setTimesAWeek(7);
 		medication.setTimesADay(1);
 		medication.setTimeToTake(LocalTime.parse("09:00"));
 		medication.setQuantity(1);
 		medication.setPillsLeft(30);
-		int numberBeforeAdding = medicationService.retrieveAll().size();
+		int numberBeforeAdding = medicationService.findAll().size();
 		medicationService.save(medication);
-		int numberAfterAdding = medicationService.retrieveAll().size();
+		int numberAfterAdding = medicationService.findAll().size();
 		assertNotEquals(numberAfterAdding, numberBeforeAdding);
 
 	}
 
 	@Test
 	public void test_ThatMedicationCanBeRetrievedUsingAnId() {
-		Medication medication = medicationService.retrieveByMedicationId(1);
+		Medication medication = medicationService.retrieveByMedicationId(2);
 		System.out.println(medication);
 		Medication medicationFromDatabase = medicationService.retrieveByMedicationId(medication.getMedicationId());
 		assertEquals(medication, medicationFromDatabase);
@@ -49,7 +49,7 @@ class MedicationServiceTest {
 
 	@Test
 	void test_findMedicationByNameAndDosage() {
-		Medication medication = medicationService.findByNameAndDosage("Paracetamol", 250);
+		Medication medication = medicationService.findByNameAndDosage("Paracetamol", "250mg");
 		assertEquals(1, medication.getMedicationId());
 	}
 
@@ -58,11 +58,12 @@ class MedicationServiceTest {
 		Medication medication = medicationService.retrieveByName("Paracetamol");
 		Medication medicationFromDatabase = medicationService.retrieveByName(medication.getName());
 		assertEquals(medication, medicationFromDatabase);
+
 	}
 
 	@Test
 	public void test_ThatAListOfMedicationCanBeRetrieved() {
-		List<Medication> allMedication = medicationService.retrieveAll();
+		List<Medication> allMedication = medicationService.findAll();
 		int numberOfMedication = allMedication.size();
 		assert (numberOfMedication > 0);
 

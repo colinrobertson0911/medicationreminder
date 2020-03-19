@@ -21,7 +21,7 @@ public class Medication {
 	private String name;
 
 	@Column
-	private int dosage;
+	private String dosage;
 
 	@Column
 	private String condition;
@@ -44,9 +44,10 @@ public class Medication {
 	@Column
 	private boolean refill;
 
-	public Medication(String name, int dosage, String condition, int timesAWeek, int timesADay, LocalTime timeToTake,
-			int quantity, int pillsLeft, boolean refill) {
+	public Medication(long medicationId, String name, String dosage, String condition, int timesAWeek, int timesADay,
+			LocalTime timeToTake, int quantity, int pillsLeft, boolean refill) {
 		super();
+		this.medicationId = medicationId;
 		this.name = name;
 		this.dosage = dosage;
 		this.condition = condition;
@@ -78,11 +79,11 @@ public class Medication {
 		this.name = name;
 	}
 
-	public int getDosage() {
+	public String getDosage() {
 		return dosage;
 	}
 
-	public void setDosage(int dosage) {
+	public void setDosage(String dosage) {
 		this.dosage = dosage;
 	}
 
@@ -142,14 +143,12 @@ public class Medication {
 		this.refill = refill;
 	}
 
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((condition == null) ? 0 : condition.hashCode());
-		result = prime * result + dosage;
+		result = prime * result + ((dosage == null) ? 0 : dosage.hashCode());
 		result = prime * result + (int) (medicationId ^ (medicationId >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + pillsLeft;
@@ -175,7 +174,10 @@ public class Medication {
 				return false;
 		} else if (!condition.equals(other.condition))
 			return false;
-		if (dosage != other.dosage)
+		if (dosage == null) {
+			if (other.dosage != null)
+				return false;
+		} else if (!dosage.equals(other.dosage))
 			return false;
 		if (medicationId != other.medicationId)
 			return false;

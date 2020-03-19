@@ -10,4 +10,5 @@ public interface PatientDao extends JpaRepository<Patient, Long> {
 	Patient findByUsernameAndPassword(@Param("username")String username, @Param("password")String password);
 	
 	Patient findByUsername(@Param("username") String username);
+
 }

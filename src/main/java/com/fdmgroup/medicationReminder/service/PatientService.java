@@ -9,33 +9,28 @@ import com.fdmgroup.medicationReminder.model.Patient;
 import com.fdmgroup.medicationReminder.repository.PatientDao;
 
 @Service
-public class PatientService implements PatientServiceRepository<Patient>  {
+public class PatientService implements PatientServiceRepository<Patient> {
 
 	@Autowired
 	private PatientDao patientDao;
-	
+
 	@Override
 	public Patient findByUsernameAndPassword(String username, String password) {
 		return patientDao.findByUsernameAndPassword(username, password);
 	}
-	
+
 	@Override
 	public Patient findByUsername(String username) {
 		return patientDao.findByUsername(username);
 	}
-	
+
 	public Patient save(Patient patient) {
 		return patientDao.save(patient);
 	}
 
-	public List<Patient> retrieveAll() {
+	public List<Patient> findAll() {
 		return patientDao.findAll();
 	}
-
-	
-
-	
-
 	
 
 }

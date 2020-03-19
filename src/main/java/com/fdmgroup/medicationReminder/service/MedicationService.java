@@ -9,22 +9,18 @@ import com.fdmgroup.medicationReminder.model.Medication;
 import com.fdmgroup.medicationReminder.repository.MedicationDao;
 
 @Service
-public class MedicationService implements MedicationServiceRepository<Medication>{
+public class MedicationService implements MedicationServiceRepository<Medication> {
 
 	@Autowired
 	private MedicationDao medicationDao;
-	
+
 	@Override
-	public Medication findByNameAndDosage(String name, int dosage) {
+	public Medication findByNameAndDosage(String name, String dosage) {
 		return medicationDao.findByNameAndDosage(name, dosage);
 	}
 
-	public List<Medication> retrieveAll() {
+	public List<Medication> findAll() {
 		return medicationDao.findAll();
-	}
-
-	public Medication findByMedicationId(long medicationId) {
-		return medicationDao.findByMedicationId(medicationId);
 	}
 
 	public Medication retrieveByMedicationId(long medicationId) {
@@ -38,9 +34,5 @@ public class MedicationService implements MedicationServiceRepository<Medication
 	public Medication retrieveByName(String name) {
 		return medicationDao.findByName(name);
 	}
-
-	
-
-	
 
 }
