@@ -15,7 +15,7 @@ public class Medication {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "medication_gen")
 	@SequenceGenerator(name = "medication_gen", sequenceName = "MEDICATION_SEQ", allocationSize = 1)
-	private long medicationId;
+	private long id;
 
 	@Column
 	private String name;
@@ -44,10 +44,9 @@ public class Medication {
 	@Column
 	private boolean refill;
 
-	public Medication(long medicationId, String name, String dosage, String condition, int timesAWeek, int timesADay,
-			LocalTime timeToTake, int quantity, int pillsLeft, boolean refill) {
+	public Medication(String name, String dosage, String condition, int timesAWeek, int timesADay, LocalTime timeToTake,
+			int quantity, int pillsLeft, boolean refill) {
 		super();
-		this.medicationId = medicationId;
 		this.name = name;
 		this.dosage = dosage;
 		this.condition = condition;
@@ -63,12 +62,12 @@ public class Medication {
 		super();
 	}
 
-	public long getMedicationId() {
-		return medicationId;
+	public long getId() {
+		return id;
 	}
 
-	public void setMedicationId(long medicationId) {
-		this.medicationId = medicationId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -149,7 +148,7 @@ public class Medication {
 		int result = 1;
 		result = prime * result + ((condition == null) ? 0 : condition.hashCode());
 		result = prime * result + ((dosage == null) ? 0 : dosage.hashCode());
-		result = prime * result + (int) (medicationId ^ (medicationId >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + pillsLeft;
 		result = prime * result + quantity;
@@ -179,7 +178,7 @@ public class Medication {
 				return false;
 		} else if (!dosage.equals(other.dosage))
 			return false;
-		if (medicationId != other.medicationId)
+		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -206,8 +205,8 @@ public class Medication {
 
 	@Override
 	public String toString() {
-		return "Medication [medicationId=" + medicationId + ", name=" + name + ", dosage=" + dosage + ", condition="
-				+ condition + ", timesAWeek=" + timesAWeek + ", timesADay=" + timesADay + ", timeToTake=" + timeToTake
+		return "Medication [id=" + id + ", name=" + name + ", dosage=" + dosage + ", condition=" + condition
+				+ ", timesAWeek=" + timesAWeek + ", timesADay=" + timesADay + ", timeToTake=" + timeToTake
 				+ ", quantity=" + quantity + ", pillsLeft=" + pillsLeft + ", refill=" + refill + "]";
 	}
 

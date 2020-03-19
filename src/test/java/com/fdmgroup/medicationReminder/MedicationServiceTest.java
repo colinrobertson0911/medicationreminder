@@ -43,14 +43,14 @@ class MedicationServiceTest {
 	public void test_ThatMedicationCanBeRetrievedUsingAnId() {
 		Medication medication = medicationService.retrieveByMedicationId(2);
 		System.out.println(medication);
-		Medication medicationFromDatabase = medicationService.retrieveByMedicationId(medication.getMedicationId());
+		Medication medicationFromDatabase = medicationService.retrieveByMedicationId(medication.getId());
 		assertEquals(medication, medicationFromDatabase);
 	}
 
 	@Test
 	void test_findMedicationByNameAndDosage() {
 		Medication medication = medicationService.findByNameAndDosage("Paracetamol", "250mg");
-		assertEquals(1, medication.getMedicationId());
+		assertEquals(1, medication.getId());
 	}
 
 	@Test

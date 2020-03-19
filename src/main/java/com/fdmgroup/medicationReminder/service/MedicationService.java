@@ -23,8 +23,8 @@ public class MedicationService implements MedicationServiceRepository<Medication
 		return medicationDao.findAll();
 	}
 
-	public Medication retrieveByMedicationId(long medicationId) {
-		return medicationDao.findByMedicationId(medicationId);
+	public Medication retrieveByMedicationId(long id) {
+		return medicationDao.findById(id);
 	}
 
 	public Medication save(Medication medication) {

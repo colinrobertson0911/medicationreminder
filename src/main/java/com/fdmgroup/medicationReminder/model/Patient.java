@@ -20,7 +20,7 @@ public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "patient_gen")
 	@SequenceGenerator(name = "patient_gen", sequenceName = "PATIENT_SEQ", allocationSize = 1)
-	private long patientId;
+	private long id;
 
 	@Column(nullable = false, length = 80, unique = true)
 	private String username;
@@ -39,13 +39,11 @@ public class Patient {
 
 	@Column
 	private int age;
-	
+
 	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinColumn(name = "id")
 	private List<Medication> medication;
-
-
 
 	public Patient(String username, String password, String name, String weight, String height, int age,
 			List<Medication> medication) {
@@ -56,18 +54,19 @@ public class Patient {
 		this.weight = weight;
 		this.height = height;
 		this.age = age;
+		this.medication = medication;
 	}
 
 	public Patient() {
 		super();
 	}
 
-	public long getPatientId() {
-		return patientId;
+	public long getId() {
+		return id;
 	}
 
-	public void setPatientId(long patientId) {
-		this.patientId = patientId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -118,6 +117,13 @@ public class Patient {
 		this.age = age;
 	}
 
+	public List<Medication> getMedication() {
+		return medication;
+	}
+
+	public void setMedication(List<Medication> medication) {
+		this.medication = medication;
+	}
 
 	@Override
 	public int hashCode() {
@@ -125,9 +131,10 @@ public class Patient {
 		int result = 1;
 		result = prime * result + age;
 		result = prime * result + ((height == null) ? 0 : height.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((medication == null) ? 0 : medication.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + (int) (patientId ^ (patientId >>> 32));
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		result = prime * result + ((weight == null) ? 0 : weight.hashCode());
 		return result;
@@ -149,6 +156,13 @@ public class Patient {
 				return false;
 		} else if (!height.equals(other.height))
 			return false;
+		if (id != other.id)
+			return false;
+		if (medication == null) {
+			if (other.medication != null)
+				return false;
+		} else if (!medication.equals(other.medication))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -158,8 +172,6 @@ public class Patient {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
-			return false;
-		if (patientId != other.patientId)
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -176,9 +188,8 @@ public class Patient {
 
 	@Override
 	public String toString() {
-		return "Patient [patientId=" + patientId + ", username=" + username + ", password=" + password + ", name="
-				+ name + ", weight=" + weight + ", height=" + height + ", age=" + age + ", medication=" 
-				+ "]";
+		return "Patient [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name
+				+ ", weight=" + weight + ", height=" + height + ", age=" + age + ", medication=" + medication + "]";
 	}
 
 }
