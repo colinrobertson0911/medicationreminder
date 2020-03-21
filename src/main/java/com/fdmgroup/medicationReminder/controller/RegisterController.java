@@ -1,5 +1,7 @@
 package com.fdmgroup.medicationReminder.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,7 +30,7 @@ public class RegisterController {
 			@ModelAttribute("patient")Patient patient,
 			ModelMap model) {
 		
-		Patient patientFromDatabase = patientService.findByUsername(patient.getUsername());
+		Optional<Patient> patientFromDatabase = patientService.findByUsername(patient.getUsername());
 		if (patientFromDatabase != null) {
 			model.addAttribute("errorMessage", "User already exists");
 			return "register.jsp";

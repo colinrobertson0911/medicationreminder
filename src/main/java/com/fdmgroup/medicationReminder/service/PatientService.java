@@ -1,6 +1,7 @@
 package com.fdmgroup.medicationReminder.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,18 @@ public class PatientService implements PatientServiceRepository<Patient> {
 	private PatientDao patientDao;
 
 	@Override
-	public Patient findByUsernameAndPassword(String username, String password) {
+	public Optional<Patient> findByUsernameAndPassword(String username, String password) {
 		return patientDao.findByUsernameAndPassword(username, password);
 	}
 
 	@Override
-	public Patient findByUsername(String username) {
+	public Optional<Patient> findByUsername(String username) {
 		return patientDao.findByUsername(username);
+	}
+	
+	@Override
+	public Optional<Patient> findById(Long id){
+		return patientDao.findById(id);
 	}
 
 	public Patient save(Patient patient) {

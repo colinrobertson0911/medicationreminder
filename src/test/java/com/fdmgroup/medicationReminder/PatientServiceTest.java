@@ -2,7 +2,9 @@ package com.fdmgroup.medicationReminder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,20 +40,20 @@ public class PatientServiceTest {
 
 	@Test
 	void test_FindByUsernameAndPasswordWhenUserExists() {
-		Patient patient = patientService.findByUsernameAndPassword("pedro01", "password");
-		assertEquals(1, patient.getId());
+		Optional<Patient> patient = patientService.findByUsernameAndPassword("pedro01", "password");
+		assertEquals(1, patient.get().getId());
 	}
 
 	@Test
 	public void test_WhenUnknownUserFindByUsernameAndPasswordWhenUserExists() {
-		Patient patient = patientService.findByUsernameAndPassword("unknown", "password");
-		assertNull(patient);
+		Optional<Patient> patient = patientService.findByUsernameAndPassword("unknown", "password");
+		assertTrue(patient.isEmpty());
 	}
 
 	@Test
 	public void test_WhenUnknownUserFindByUsernameWhenUserExists() {
-		Patient patient = patientService.findByUsername("unknown");
-		assertNull(patient);
+		Optional<Patient> patient = patientService.findByUsername("unknown");
+		assertTrue(patient.isEmpty());
 	}
 
 }

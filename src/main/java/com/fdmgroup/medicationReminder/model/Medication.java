@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Medication {
 
@@ -17,28 +19,29 @@ public class Medication {
 	@SequenceGenerator(name = "medication_gen", sequenceName = "MEDICATION_SEQ", allocationSize = 1)
 	private long id;
 
-	@Column
+	@Column(nullable = false)
 	private String name;
 
-	@Column
+	@Column(nullable = false)
 	private String dosage;
 
 	@Column
 	private String condition;
 
-	@Column
+	@Column(nullable = false)
 	private int timesAWeek;
 
-	@Column
+	@Column(nullable = false)
 	private int timesADay;
 
-	@Column
+	@Column(nullable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalTime timeToTake;
 
-	@Column
+	@Column(nullable = false)
 	private int quantity;
 
-	@Column
+	@Column(nullable = false)
 	private int pillsLeft;
 
 	@Column
@@ -114,8 +117,8 @@ public class Medication {
 		return timeToTake;
 	}
 
-	public void setTimeToTake(LocalTime timeToTake) {
-		this.timeToTake = timeToTake;
+	public void setTimeToTake(LocalTime localTime) {
+		this.timeToTake = localTime;
 	}
 
 	public int getQuantity() {

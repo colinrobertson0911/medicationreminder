@@ -7,7 +7,12 @@
 <title>Main</title>
 </head>
 <body>
+	<div>
 	<a href="Logout">Log out</a>
+	</div>
+	<div>
+		<a href="AllMedication">All Medication</a>
+	</div>
 	<h1>Logged In</h1>
 	<h3>Hello ${user.username}.</h3>
 </body>

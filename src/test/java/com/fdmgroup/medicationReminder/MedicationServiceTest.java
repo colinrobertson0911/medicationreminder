@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +42,9 @@ class MedicationServiceTest {
 
 	@Test
 	public void test_ThatMedicationCanBeRetrievedUsingAnId() {
-		Medication medication = medicationService.retrieveByMedicationId(2);
-		System.out.println(medication);
-		Medication medicationFromDatabase = medicationService.retrieveByMedicationId(medication.getId());
-		assertEquals(medication, medicationFromDatabase);
+		Optional<Medication> medicationOpt = medicationService.findById(2L);
+		Medication medication = medicationOpt.get();
+		assertEquals("Amlodipine", medication.getName());
 	}
 
 	@Test

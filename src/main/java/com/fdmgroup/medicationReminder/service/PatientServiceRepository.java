@@ -1,10 +1,14 @@
 package com.fdmgroup.medicationReminder.service;
 
+import java.util.Optional;
+
 public interface PatientServiceRepository<Patient> {
 	
-	Patient findByUsernameAndPassword(String username, String password);
+	Optional<Patient> findByUsernameAndPassword(String username, String password);
 	
-	Patient findByUsername(String username);
+	Optional<Patient> findByUsername(String username);
+	
+	Optional<Patient> findById(Long id);
 	
 	Patient save (Patient patient);
 }

@@ -1,6 +1,7 @@
 package com.fdmgroup.medicationReminder.controller;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -26,7 +27,6 @@ public class LoginController {
 	@Autowired
 	PatientService patientService;
 	
-	// For empty default url
 	@GetMapping("")
 	public String home() {
 		return "home.jsp";
@@ -43,8 +43,8 @@ public class LoginController {
 			ModelMap model,
 			HttpSession session) {
 		
-		Patient patientFromDatabase = patientService.findByUsernameAndPassword(patient.getUsername(), patient.getPassword());
-		if (patientFromDatabase == null) {
+		Optional<Patient> patientFromDatabase = patientService.findByUsernameAndPassword(patient.getUsername(), patient.getPassword());
+		if (patientFromDatabase.isEmpty()) {
 			model.addAttribute("errorMessage", "Incorrect username or password");
 			return new ModelAndView("login.jsp");
 		}
@@ -56,7 +56,10 @@ public class LoginController {
 
 	@GetMapping("Logout")
 	public String logout(HttpSession session) {
-		LOGGER.info("User {} logged out at {}", ((Patient) session.getAttribute(SESSION_ATTRIBUTE_USER)).getUsername(), LocalDateTime.now());
+		Patient patient = (Patient)session.getAttribute(SESSION_ATTRIBUTE_USER);
+		if (patient != null){
+			LOGGER.warn("User {} logged out at {}", patient.getUsername(), LocalDateTime.now());
+		}
 		session.invalidate();
 		return "home.jsp";
 	}

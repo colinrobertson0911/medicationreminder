@@ -1,6 +1,7 @@
 package com.fdmgroup.medicationReminder.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,16 +24,16 @@ public class MedicationService implements MedicationServiceRepository<Medication
 		return medicationDao.findAll();
 	}
 
-	public Medication retrieveByMedicationId(long id) {
-		return medicationDao.findById(id);
-	}
-
 	public Medication save(Medication medication) {
 		return medicationDao.save(medication);
 	}
 
 	public Medication retrieveByName(String name) {
 		return medicationDao.findByName(name);
+	}
+
+	public Optional<Medication> findById(Long id) {
+		return medicationDao.findById(id);
 	}
 
 }
