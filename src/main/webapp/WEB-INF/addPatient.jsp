@@ -12,24 +12,31 @@
 	
 	<f:form method="post" action="AddPatientSubmit" modelAttribute="patient">
 		<div>
-			<f:errors path="username"/>
 			<f:label path="username">User name:</f:label>
 			<f:input path="username" type="text" required="required" size="30" maxlength="80"/>
 		</div>
 		<div>
-			<f:errors path="password"/>
 			<f:label path="password">Password:</f:label>
 			<f:input path="password" type="password" required="required" size="30" maxlength="80"/>
 		</div>
 		<div>
-			<f:errors path="verified"/>
-			<f:label path="verified">Verify:</f:label>
-			<f:checkbox path="verified"/>
+			<f:label path="name">Name:</f:label>
+			<f:input path="name" type="text" required="required" size="30"/>
 		</div>
 		<div>
-			<f:label path="userType">User Type:</f:label>
-			<f:select path="userType" items="${userTypes}" itemLabel="name" required="required"/>
+			<f:label path="weight">Weight:</f:label>
+			<f:input path="weight" type="text" required="required" size="10"/>
 		</div>
+		<div>
+			<f:label path="height">Height:</f:label>
+			<f:input path="height" type="text" required="required" size="10"/>
+		</div>
+		<div>
+			<f:label path="age">Age:</f:label>
+			<f:input path="age" type="number" required="required"/>
+		</div>
+		
+		
 		<p>
 			<input type="submit" value="Add"/>
 		</p>

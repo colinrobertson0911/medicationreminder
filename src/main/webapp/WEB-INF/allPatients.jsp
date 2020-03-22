@@ -9,16 +9,37 @@
 </head>
 <body>
 	<h2>All Patients</h2>
+	<p>
+		<a href="AddPatient">Add new Patient</a>
+	</p>
 	<div>
 		<c:forEach items="${allPatients}" var="patient">
 			<div>
 				<a href="EditPatient?id=${patient.id}">${patient.username }</a>
 			</div>
+			<div>
+				<label>Name: </label>
+				${patient.name}
+			</div>
+			<div>
+				<label>Weight: </label>
+				${patient.weight}
+			</div>
+			<div>
+				<label>Height: </label>
+				${patient.height}
+			</div>
+			<div>
+				<label>Age: </label>
+				${patient.age}
+			</div>
+			<%-- <div>
+				<c:forEach items="${patient.medication}" var="medication">
+					<div>${medication.medication}</div>
+				</c:forEach>
+			</div> --%>
+			
 		</c:forEach>
 	</div>
-	
-	<form action="AddPatient">
-		<p><input type="submit" value="Add a patient"/></p>
-	</form>
 </body>
 </html>
