@@ -33,11 +33,6 @@
 				<label>Age: </label>
 				${patient.age}
 			</div>
-			<%-- <div>
-				<c:forEach items="${patient.medication}" var="medication">
-					<div>${medication.medication}</div>
-				</c:forEach>
-			</div> --%>
 			
 		</c:forEach>
 	</div>
