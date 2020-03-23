@@ -13,7 +13,7 @@
 		<form action="RegisterSubmit" method="post">
 			${errorMessage}
 			<div>
-				<label>Username:</label>
+				<label>User name:</label>
 				<input type="text" name="username"/>
 			</div>
 			<div>

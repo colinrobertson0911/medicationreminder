@@ -31,7 +31,7 @@ public class RegisterController {
 			ModelMap model) {
 		
 		Optional<Patient> patientFromDatabase = patientService.findByUsername(patient.getUsername());
-		if (patientFromDatabase != null) {
+		if (patientFromDatabase.isPresent()) {
 			model.addAttribute("errorMessage", "User already exists");
 			return "register.jsp";
 		}

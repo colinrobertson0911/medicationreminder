@@ -1,6 +1,6 @@
 package com.fdmgroup.medicationReminder.model;
 
-import java.time.LocalTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,9 +36,10 @@ public class Medication {
 	@Column(nullable = false)
 	private int timesADay;
 
-	@Column(nullable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalTime timeToTake;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "timeToTake")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private Date timeToTake;
 
 	@Column(nullable = false)
 	private int quantity;
@@ -47,7 +50,7 @@ public class Medication {
 	@Column
 	private boolean refill;
 
-	public Medication(String name, String dosage, String condition, int timesAWeek, int timesADay, LocalTime timeToTake,
+	public Medication(String name, String dosage, String condition, int timesAWeek, int timesADay, Date timeToTake,
 			int quantity, int pillsLeft, boolean refill) {
 		super();
 		this.name = name;
@@ -63,6 +66,7 @@ public class Medication {
 
 	public Medication() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public long getId() {
@@ -113,12 +117,12 @@ public class Medication {
 		this.timesADay = timesADay;
 	}
 
-	public LocalTime getTimeToTake() {
+	public Date getTimeToTake() {
 		return timeToTake;
 	}
 
-	public void setTimeToTake(LocalTime localTime) {
-		this.timeToTake = localTime;
+	public void setTimeToTake(Date timeToTake) {
+		this.timeToTake = timeToTake;
 	}
 
 	public int getQuantity() {

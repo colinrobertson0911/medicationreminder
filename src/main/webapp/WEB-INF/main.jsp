@@ -16,6 +16,9 @@
 	<div>
 		<a href="AllPatients">All Patients</a>
 	</div>
+	<div>
+		<a href="MyMedication">My Medication</a>
+	</div>
 	<h1>Logged In</h1>
 	<h3>Hello ${user.username}.</h3>
 </body>

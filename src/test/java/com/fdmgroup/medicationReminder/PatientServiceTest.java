@@ -55,5 +55,12 @@ public class PatientServiceTest {
 		Optional<Patient> patient = patientService.findByUsername("unknown");
 		assertTrue(patient.isEmpty());
 	}
+	
+	@Test
+	public void test_ThatAPatientCanBeEdited() {
+		Patient patient = patientService.findByUsername("pedro01").get();
+		patient.setWeight("90kg");
+		assertEquals("90kg", patient.getWeight());
+	}
 
 }

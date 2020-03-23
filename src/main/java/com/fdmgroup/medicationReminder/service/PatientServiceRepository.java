@@ -11,4 +11,5 @@ public interface PatientServiceRepository<Patient> {
 	Optional<Patient> findById(Long id);
 	
 	Patient save (Patient patient);
+	
 }

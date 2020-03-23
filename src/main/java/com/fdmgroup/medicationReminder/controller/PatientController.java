@@ -19,6 +19,7 @@ public class PatientController {
 	@Autowired
 	private PatientService patientService;
 	
+	
 	@RequestMapping("AllPatients")
 	public ModelAndView allPatients() {
 		return new ModelAndView("WEB-INF/allPatients.jsp", "allPatients", patientService.findAll());
@@ -32,7 +33,7 @@ public class PatientController {
 	@PostMapping("AddPatientSubmit")
 	public ModelAndView addPatientSubmit(@ModelAttribute("patient")Patient patient) {
 		patientService.save(patient);
-		return new ModelAndView("foward:/AllPatients");
+		return new ModelAndView("forward:/AllPatients");
 	}
 	
 	@RequestMapping("EditPatient")
@@ -48,8 +49,12 @@ public class PatientController {
 	@PostMapping("EditPatientSubmit")
 	public ModelAndView editPatientSubmit(@ModelAttribute("patient")Patient patient) {
 		patientService.save(patient);
-		return new ModelAndView("foward:/AllPatients");
+		return new ModelAndView("forward:/AllPatients");
 	}
 	
+//	@RequestMapping("MyMedication")
+//	public ModelAndView myMedication() {
+//		return new ModelAndView("WEB-INF/myMedication.jsp", "myMedication", patientService.);
+//	}
 	
 }

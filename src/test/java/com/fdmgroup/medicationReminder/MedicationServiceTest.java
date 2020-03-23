@@ -3,7 +3,6 @@ package com.fdmgroup.medicationReminder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +29,7 @@ class MedicationServiceTest {
 		medication.setCondition(null);
 		medication.setTimesAWeek(7);
 		medication.setTimesADay(1);
-		medication.setTimeToTake(LocalTime.parse("09:00"));
+		medication.setTimeToTake(null);
 		medication.setQuantity(1);
 		medication.setPillsLeft(30);
 		int numberBeforeAdding = medicationService.findAll().size();
@@ -65,8 +64,15 @@ class MedicationServiceTest {
 	public void test_ThatAListOfMedicationCanBeRetrieved() {
 		List<Medication> allMedication = medicationService.findAll();
 		int numberOfMedication = allMedication.size();
-		assert (numberOfMedication > 0);
+		assert(numberOfMedication > 0);
 
+	}@Test
+	public void test_ThatMedicationCanBeEdited() {
+		Medication medication = medicationService.findByNameAndDosage("Paracetamol", "250mg");
+		medication.setDosage("500mg");
+		assertEquals("500mg", medication.getDosage());
 	}
+	
+	
 
 }

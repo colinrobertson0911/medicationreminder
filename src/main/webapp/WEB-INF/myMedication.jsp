@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1">
-<title>All Medication</title>
+<title>My Medication</title>
 </head>
 <body>
-	<h2>All Medication</h2>
+	<h2>My Medication</h2>
 	<p>
 		<a href="AddMedication">Add new Medication</a>
 	</p>
 	<div>
-		<c:forEach items="${allMedication}" var="medication">
+		<c:forEach items="${myMedication}" var="medication">
 			<div>
 				<a href="EditMedication?id=${medication.id}">${medication.name}</a>
 			</div>
@@ -49,8 +49,9 @@
 				<label>Time to Refill</label>
 				${medication.refill}
 			</div>
-			
+		
 		</c:forEach>
 	</div>
+	
 </body>
 </html>

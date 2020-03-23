@@ -30,10 +30,10 @@
 			<f:label path="timesADay">Times A Day: </f:label>
 			<f:input path="timesADay" type="number" required="required" size="1" />
 		</div>
-		<%-- <div>
+		<div>
 			<f:label path="timeToTake">Time To Take: </f:label>
-			<f:input path="timeToTake" type="time" required="required" />
-		</div> --%>
+			<f:input path="timeToTake" type="datetime-local" name="timeToTake" />
+		</div>
 		<div>
 			<f:label path="quantity">Quantity: </f:label>
 			<f:input path="quantity" type="number" required="required" size="1" />

@@ -43,4 +43,5 @@ public class MedicationController {
 		medicationService.save(medication);
 		return new ModelAndView("WEB-INF/allMedication.jsp", "allMedication", medicationService.findAll());
 	}
+	
 }
