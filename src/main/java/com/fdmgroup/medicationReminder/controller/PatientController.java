@@ -19,7 +19,6 @@ public class PatientController {
 	@Autowired
 	private PatientService patientService;
 	
-	
 	@RequestMapping("AllPatients")
 	public ModelAndView allPatients() {
 		return new ModelAndView("WEB-INF/allPatients.jsp", "allPatients", patientService.findAll());
@@ -52,9 +51,12 @@ public class PatientController {
 		return new ModelAndView("forward:/AllPatients");
 	}
 	
-//	@RequestMapping("MyMedication")
-//	public ModelAndView myMedication() {
-//		return new ModelAndView("WEB-INF/myMedication.jsp", "myMedication", patientService.);
-//	}
+	@RequestMapping("MyMedication")
+	public ModelAndView myMedication(@RequestParam("id")Long id) {
+		Patient patient = patientService.findById(id).get();
+		patient.getMedication();
+		ModelAndView modelAndView = new ModelAndView("WEB-INF/myMedication.jsp");
+		return modelAndView;
+	}
 	
 }

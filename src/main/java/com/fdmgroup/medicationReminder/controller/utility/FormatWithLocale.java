@@ -8,7 +8,7 @@ import java.util.Locale;
 public class FormatWithLocale {
 
 	public static final DateTimeFormatter DATE_AND_TIME_FORMATTER = new DateTimeFormatterBuilder()
-			.appendPattern("dd/MM/yyyy HH:mm:ss")
+			.appendPattern("dd/MM/yyyy HH:mm")
 			.toFormatter(Locale.getDefault());
 
 	public static final DateTimeFormatter DATE_FORMATTER = new DateTimeFormatterBuilder()
