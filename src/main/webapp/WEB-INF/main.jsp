@@ -21,7 +21,6 @@
 	</div>
 	<h1>Logged In</h1>
 	<h3>Hello ${patient.username}.</h3>
-	<p>${patient}</p>
 	<input type="hidden" value="${patientId}" />
 </body>
 </html>

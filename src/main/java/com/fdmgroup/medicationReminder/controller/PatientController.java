@@ -21,6 +21,8 @@ public class PatientController {
 	@Autowired
 	private PatientService patientService;
 	
+	
+	
 	@RequestMapping("AllPatients")
 	public ModelAndView allPatients() {
 		return new ModelAndView("WEB-INF/allPatients.jsp", "allPatients", patientService.findAll());
@@ -58,7 +60,6 @@ public class PatientController {
 		session.getAttribute("patientId");
 		Patient patient = patientService.findById(patientId).get();
 		patient.getMedication();
-		System.err.println(patient);
 		ModelAndView modelAndView = new ModelAndView("WEB-INF/myMedication.jsp", "allMedication", patient.getMedication());
 		return modelAndView;
 	}

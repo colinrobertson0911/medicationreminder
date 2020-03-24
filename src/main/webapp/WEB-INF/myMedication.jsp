@@ -9,15 +9,9 @@
 </head>
 <body>
 	<h2>My Medication</h2>
-	<p>
-		<a href="AddMedication">Add new Medication</a>
-	</p>
 
 	<div>
 		<c:forEach items="${allMedication}" var="patient">
-			<div>
-				<a href="EditMedication?id=${medication.id}">${patient.name}</a>
-			</div>
 			<div>
 				<label>Name: </label>
 				${patient.name}
@@ -55,7 +49,7 @@
 				${patient.refill}
 			</div>
 			<div>
-			
+				<p>---------------------</p>
 			</div>
 		
 		</c:forEach>

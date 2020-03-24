@@ -55,9 +55,7 @@ public class LoginController {
 		session.setAttribute(SESSION_ATTRIBUTE_USER, patientFromDatabase.get());
 		Patient patientForId = patientService.findByUsername(patient.getUsername()).get();
 		Long patientId = patientForId.getPatientId();
-		System.err.println(patientFromDatabase.get());
 		session.setAttribute(SESSION_ATTRIBUTE_PATIENTID, patientId);
-		System.err.println(patientForId);
 		patient.setPatientId(patientId);
 		return new ModelAndView("/WEB-INF/main.jsp");
 		
