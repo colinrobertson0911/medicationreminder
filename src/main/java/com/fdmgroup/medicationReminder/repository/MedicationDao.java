@@ -11,6 +11,6 @@ public interface MedicationDao extends JpaRepository<Medication, Long> {
 
 	Medication findByName(@Param("name") String name);
 
-	Medication findById(@Param("id") long id);
+	Medication findById(@Param("medicationId") long medicationId);
 
 }

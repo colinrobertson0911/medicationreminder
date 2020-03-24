@@ -12,7 +12,7 @@
 	<div>
 		<c:forEach items="${allPatients}" var="patient">
 			<div>
-				<a href="EditPatient?id=${patient.id}">${patient.username }</a>
+				<a href="EditPatient?id=${patient.patientId}">${patient.username }</a>
 			</div>	
 		</c:forEach>
 	</div>

@@ -17,9 +17,11 @@
 		<a href="AllPatients">All Patients</a>
 	</div>
 	<div>
-		<a href="MyMedication">My Medication</a>
+		<a href="MyMedication?patientId=${patient.patientId}" >My Medication</a>
 	</div>
 	<h1>Logged In</h1>
-	<h3>Hello ${user.username}.</h3>
+	<h3>Hello ${patient.username}.</h3>
+	<p>${patient}</p>
+	<input type="hidden" value="${patientId}" />
 </body>
 </html>

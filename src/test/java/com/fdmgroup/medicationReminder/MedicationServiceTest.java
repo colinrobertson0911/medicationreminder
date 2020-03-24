@@ -49,7 +49,7 @@ class MedicationServiceTest {
 	@Test
 	void test_findMedicationByNameAndDosage() {
 		Medication medication = medicationService.findByNameAndDosage("Paracetamol", "250mg");
-		assertEquals(1, medication.getId());
+		assertEquals(1, medication.getMedicationId());
 	}
 
 	@Test

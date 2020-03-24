@@ -43,7 +43,7 @@
 			<f:input path="pillsLeft" type="number" required="required" size="3" />
 		</div>
 		<div>
-			<f:hidden path="id" />
+			<f:hidden path="medicationId" />
 		</div>
 		<div>
 			<button type="submit">Add Medication</button>

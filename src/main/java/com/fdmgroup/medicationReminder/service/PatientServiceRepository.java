@@ -8,7 +8,7 @@ public interface PatientServiceRepository<Patient> {
 	
 	Optional<Patient> findByUsername(String username);
 	
-	Optional<Patient> findById(Long id);
+	Optional<Patient> findById(Long patientId);
 	
 	Patient save (Patient patient);
 	

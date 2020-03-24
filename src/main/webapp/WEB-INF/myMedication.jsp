@@ -12,48 +12,50 @@
 	<p>
 		<a href="AddMedication">Add new Medication</a>
 	</p>
-	<p>${medication.patientid}</p>
+
 	<div>
-		<c:forEach items="${patient}" var="patient">
+		<c:forEach items="${allMedication}" var="patient">
 			<div>
-				<a href="EditMedication?id=${medication.id}">${medication.name}</a>
+				<a href="EditMedication?id=${medication.id}">${patient.name}</a>
+			</div>
+			<div>
+				<label>Name: </label>
+				${patient.name}
 			</div>
 			<div>
 				<label>Dosage: </label>
-				${medication.dosage}
+				${patient.dosage}
 			</div>
 			<div>
 				<label>Condition: </label>
-				${medication.condition}
+				${patient.condition}
 			</div>
 			<div>
 				<label>Times A Week: </label>
-				${medication.timesAWeek}
+				${patient.timesAWeek}
 			</div>
 			<div>
 				<label>Times A Day: </label>
-				${medication.timesADay}
+				${patient.timesADay}
 			</div>
 			<div>
 				<label>Time To Take: </label>
-				${medication.timeToTake}
+				${patient.timeToTake}
 			</div>
 			<div>
 				<label>Quantity: </label>
-				${medication.quantity}
+				${patient.quantity}
 			</div>
 			<div>
 				<label>Pills Left: </label>
-				${medication.pillsLeft}
+				${patient.pillsLeft}
 			</div>
 			<div>
 				<label>Time to Refill</label>
-				${medication.refill}
+				${patient.refill}
 			</div>
 			<div>
-				<c:forEach items="${patient.medication}" var="patient">
-					<div>${patient.name}</div>
-				</c:forEach>
+			
 			</div>
 		
 		</c:forEach>

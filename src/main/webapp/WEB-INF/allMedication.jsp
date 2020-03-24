@@ -15,7 +15,7 @@
 	<div>
 		<c:forEach items="${allMedication}" var="medication">
 			<div>
-				<a href="EditMedication?id=${medication.id}">${medication.name}</a>
+				<a href="EditMedication?id=${medication.medicationId}">${medication.name}</a>
 			</div>
 			<div>
 				<label>Dosage: </label>

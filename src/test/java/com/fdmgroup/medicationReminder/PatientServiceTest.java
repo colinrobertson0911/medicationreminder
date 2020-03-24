@@ -47,7 +47,7 @@ public class PatientServiceTest {
 	@Test
 	void test_FindByUsernameAndPasswordWhenUserExists() {
 		Patient patient = patientService.findByUsernameAndPassword("pedro01", "password").get();
-		assertEquals(1, patient.getId());
+		assertEquals(1, patient.getPatientId());
 	}
 
 	@Test

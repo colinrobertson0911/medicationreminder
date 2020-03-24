@@ -2,6 +2,8 @@ package com.fdmgroup.medicationReminder.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -52,10 +54,12 @@ public class PatientController {
 	}
 	
 	@RequestMapping("MyMedication")
-	public ModelAndView myMedication(@RequestParam("id")Long id) {
-		Patient patient = patientService.findById(id).get();
+	public ModelAndView myMedication(@RequestParam("patientId")Long patientId, HttpSession session) {
+		session.getAttribute("patientId");
+		Patient patient = patientService.findById(patientId).get();
 		patient.getMedication();
-		ModelAndView modelAndView = new ModelAndView("WEB-INF/myMedication.jsp");
+		System.err.println(patient);
+		ModelAndView modelAndView = new ModelAndView("WEB-INF/myMedication.jsp", "allMedication", patient.getMedication());
 		return modelAndView;
 	}
 	

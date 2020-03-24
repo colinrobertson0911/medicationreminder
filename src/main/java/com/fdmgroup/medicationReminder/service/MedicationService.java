@@ -32,8 +32,8 @@ public class MedicationService implements MedicationServiceRepository<Medication
 		return medicationDao.findByName(name);
 	}
 
-	public Optional<Medication> findById(Long id) {
-		return medicationDao.findById(id);
+	public Optional<Medication> findById(Long medicationId) {
+		return medicationDao.findById(medicationId);
 	}
 
 }

@@ -22,6 +22,8 @@ import com.fdmgroup.medicationReminder.service.PatientService;
 public class LoginController {
 
 	public final static String SESSION_ATTRIBUTE_USER = "USER";
+	public final static String SESSION_ATTRIBUTE_PATIENTID = "PATIENTID";
+
 	private final static Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
@@ -50,8 +52,15 @@ public class LoginController {
 		}
 		
 		LOGGER.info("User {} logged in at {}", patient.getUsername(), LocalDateTime.now());
-		session.setAttribute(SESSION_ATTRIBUTE_USER, patientFromDatabase);
+		session.setAttribute(SESSION_ATTRIBUTE_USER, patientFromDatabase.get());
+		Patient patientForId = patientService.findByUsername(patient.getUsername()).get();
+		Long patientId = patientForId.getPatientId();
+		System.err.println(patientFromDatabase.get());
+		session.setAttribute(SESSION_ATTRIBUTE_PATIENTID, patientId);
+		System.err.println(patientForId);
+		patient.setPatientId(patientId);
 		return new ModelAndView("/WEB-INF/main.jsp");
+		
 	}
 
 	@GetMapping("Logout")

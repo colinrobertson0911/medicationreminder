@@ -26,8 +26,8 @@ public class PatientService implements PatientServiceRepository<Patient> {
 	}
 	
 	@Override
-	public Optional<Patient> findById(Long id){
-		return patientDao.findById(id);
+	public Optional<Patient> findById(Long patientId){
+		return patientDao.findById(patientId);
 	}
 
 	public Patient save(Patient patient) {

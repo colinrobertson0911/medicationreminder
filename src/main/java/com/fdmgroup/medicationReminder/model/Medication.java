@@ -19,7 +19,7 @@ public class Medication {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "medication_gen")
 	@SequenceGenerator(name = "medication_gen", sequenceName = "MEDICATION_SEQ", allocationSize = 1)
-	private long id;
+	private long medicationId;
 
 	@Column(nullable = false)
 	private String name;
@@ -66,15 +66,14 @@ public class Medication {
 
 	public Medication() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public long getId() {
-		return id;
+	public long getMedicationId() {
+		return medicationId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setMedicationId(long medicationId) {
+		this.medicationId = medicationId;
 	}
 
 	public String getName() {
@@ -155,8 +154,8 @@ public class Medication {
 		int result = 1;
 		result = prime * result + ((condition == null) ? 0 : condition.hashCode());
 		result = prime * result + ((dosage == null) ? 0 : dosage.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (int) (medicationId ^ (medicationId >>> 32));
 		result = prime * result + pillsLeft;
 		result = prime * result + quantity;
 		result = prime * result + (refill ? 1231 : 1237);
@@ -185,12 +184,12 @@ public class Medication {
 				return false;
 		} else if (!dosage.equals(other.dosage))
 			return false;
-		if (id != other.id)
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
+			return false;
+		if (medicationId != other.medicationId)
 			return false;
 		if (pillsLeft != other.pillsLeft)
 			return false;
@@ -212,8 +211,8 @@ public class Medication {
 
 	@Override
 	public String toString() {
-		return "Medication [id=" + id + ", name=" + name + ", dosage=" + dosage + ", condition=" + condition
-				+ ", timesAWeek=" + timesAWeek + ", timesADay=" + timesADay + ", timeToTake=" + timeToTake
+		return "Medication [medicationId=" + medicationId + ", name=" + name + ", dosage=" + dosage + ", condition="
+				+ condition + ", timesAWeek=" + timesAWeek + ", timesADay=" + timesADay + ", timeToTake=" + timeToTake
 				+ ", quantity=" + quantity + ", pillsLeft=" + pillsLeft + ", refill=" + refill + "]";
 	}
 

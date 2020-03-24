@@ -20,7 +20,7 @@ public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "patient_gen")
 	@SequenceGenerator(name = "patient_gen", sequenceName = "PATIENT_SEQ", allocationSize = 1)
-	private long id;
+	private long patientId;
 
 	@Column(nullable = false, length = 80, unique = true)
 	private String username;
@@ -42,7 +42,7 @@ public class Patient {
 
 	@ManyToMany
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "medicationId")
 	private List<Medication> medication;
 
 	public Patient(String username, String password, String name, String weight, String height, int age,
@@ -61,12 +61,12 @@ public class Patient {
 		super();
 	}
 
-	public long getId() {
-		return id;
+	public long getPatientId() {
+		return patientId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setPatientId(long patientId) {
+		this.patientId = patientId;
 	}
 
 	public String getUsername() {
@@ -131,10 +131,10 @@ public class Patient {
 		int result = 1;
 		result = prime * result + age;
 		result = prime * result + ((height == null) ? 0 : height.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((medication == null) ? 0 : medication.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + (int) (patientId ^ (patientId >>> 32));
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		result = prime * result + ((weight == null) ? 0 : weight.hashCode());
 		return result;
@@ -156,8 +156,6 @@ public class Patient {
 				return false;
 		} else if (!height.equals(other.height))
 			return false;
-		if (id != other.id)
-			return false;
 		if (medication == null) {
 			if (other.medication != null)
 				return false;
@@ -172,6 +170,8 @@ public class Patient {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
+			return false;
+		if (patientId != other.patientId)
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -188,8 +188,9 @@ public class Patient {
 
 	@Override
 	public String toString() {
-		return "Patient [id=" + id + ", username=" + username + ", password=" + password + ", name=" + name
-				+ ", weight=" + weight + ", height=" + height + ", age=" + age + ", medication=" + medication + "]";
+		return "Patient [patientId=" + patientId + ", username=" + username + ", password=" + password + ", name="
+				+ name + ", weight=" + weight + ", height=" + height + ", age=" + age + ", medication=" + medication
+				+ "]";
 	}
 
 }

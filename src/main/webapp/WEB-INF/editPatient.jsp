@@ -38,7 +38,7 @@
 		<p>
 			<input type="submit" value="Update" />
 		</p>
-		<f:hidden path="id" />
+		<f:hidden path="patientId" />
 	</f:form>
 </body>
 </html>
