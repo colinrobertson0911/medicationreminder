@@ -49,6 +49,9 @@
 				<label>Time to Refill</label>
 				${medication.refill}
 			</div>
+			<div>
+				<p>---------------------</p>
+			</div>
 			
 		</c:forEach>
 	</div>

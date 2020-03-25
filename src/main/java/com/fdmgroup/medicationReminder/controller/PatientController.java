@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fdmgroup.medicationReminder.model.Patient;
+import com.fdmgroup.medicationReminder.service.MedicationService;
 import com.fdmgroup.medicationReminder.service.PatientService;
 
 @Controller
@@ -20,6 +21,9 @@ public class PatientController {
 	
 	@Autowired
 	private PatientService patientService;
+	
+	@Autowired
+	private MedicationService medicationService;
 	
 	
 	
@@ -30,7 +34,10 @@ public class PatientController {
 	
 	@RequestMapping("AddPatient")
 	public ModelAndView addPatient() {
-		return new ModelAndView("WEB-INF/addPatient.jsp", "patient", new Patient());
+		ModelAndView modelAndView = new ModelAndView("WEB-INF/addPatient.jsp");
+		modelAndView.addObject("patient", new Patient());
+		modelAndView.addObject("allMedication", medicationService.findAll());
+		return modelAndView;
 	}
 	
 	@PostMapping("AddPatientSubmit")

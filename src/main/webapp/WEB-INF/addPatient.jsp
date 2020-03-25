@@ -35,6 +35,10 @@
 			<f:label path="age">Age:</f:label>
 			<f:input path="age" type="number" required="required" />
 		</div>
+		<div>
+			<f:label path="medication">Medication: </f:label>
+			<f:select path="medication" items="${allMedication}" itemLabel="name" multiple="multiple" required="required"/>
+		</div>
 		<p>
 			<input type="submit" value="Add" />
 		</p>
