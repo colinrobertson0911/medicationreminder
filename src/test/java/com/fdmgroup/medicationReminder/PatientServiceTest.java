@@ -38,7 +38,6 @@ public class PatientServiceTest {
 		patient.setAge(40);
 		int numberBeforeAdding = patientService.findAll().size();
 		patientService.save(patient);
-		System.out.println(patient);
 		int numberAfterAdding = patientService.findAll().size();
 		assertNotEquals(numberAfterAdding, numberBeforeAdding);
 
@@ -75,7 +74,6 @@ public class PatientServiceTest {
 		List<Medication> medication = medicationService.findAll();
 		patient.getMedication();
 		int numberOfMedication = medication.size();
-		System.out.println(patient);
 		assert(numberOfMedication > 0);
 	}
 

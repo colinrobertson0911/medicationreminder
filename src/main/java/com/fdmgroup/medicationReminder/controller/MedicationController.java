@@ -35,7 +35,7 @@ public class MedicationController {
 
 	@GetMapping("EditMedication")
 	public ModelAndView editMedication(@RequestParam("id") Long id) {
-		return new ModelAndView("WEB-INF/editMedication.jsp", "medication", medicationService.findById(id));
+		return new ModelAndView("WEB-INF/editMedication.jsp", "medication", medicationService.retrieveById(id));
 	}
 
 	@PostMapping("EditMedicationSubmit")

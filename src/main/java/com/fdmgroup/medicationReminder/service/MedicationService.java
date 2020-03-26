@@ -1,5 +1,6 @@
 package com.fdmgroup.medicationReminder.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +33,28 @@ public class MedicationService implements MedicationServiceRepository<Medication
 		return medicationDao.findByName(name);
 	}
 
-	public Optional<Medication> findById(Long medicationId) {
+	public Optional<Medication> retrieveById(Long medicationId) {
 		return medicationDao.findById(medicationId);
+	}
+	
+	public int removePillsFromPillsLeft(int pillsLeft, Long medicationId) {
+		Medication medication = retrieveById(medicationId).get();
+		Date timeTaken = medication.getTimeToTake();
+		int totalPills = medication.getPillsLeft();
+		int pillsTaken = medication.getQuantity();
+		if (timeTaken == medication.getTimeToTake()) {
+			pillsLeft = totalPills - pillsTaken;
+		}
+		return pillsLeft;
+	}
+
+	public boolean refillReminder(int pillsLeft, Long medicationId) {
+		Medication medication = retrieveById(medicationId).get();
+		int totalPills = medication.getPillsLeft();
+		if (totalPills < 7) {
+			return true;
+		}
+		return false;
 	}
 
 }

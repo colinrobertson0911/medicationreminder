@@ -41,7 +41,7 @@ class MedicationServiceTest {
 
 	@Test
 	public void test_ThatMedicationCanBeRetrievedUsingAnId() {
-		Optional<Medication> medicationOpt = medicationService.findById(2L);
+		Optional<Medication> medicationOpt = medicationService.retrieveById(2L);
 		Medication medication = medicationOpt.get();
 		assertEquals("Amlodipine", medication.getName());
 	}
@@ -64,15 +64,29 @@ class MedicationServiceTest {
 	public void test_ThatAListOfMedicationCanBeRetrieved() {
 		List<Medication> allMedication = medicationService.findAll();
 		int numberOfMedication = allMedication.size();
-		assert(numberOfMedication > 0);
+		assert (numberOfMedication > 0);
 
-	}@Test
+	}
+
+	@Test
 	public void test_ThatMedicationCanBeEdited() {
 		Medication medication = medicationService.findByNameAndDosage("Paracetamol", "250mg");
 		medication.setDosage("500mg");
 		assertEquals("500mg", medication.getDosage());
 	}
 	
+	@Test
+	public void test_ThatPillsLeftIsCalculatedOnceTimeToTakeHasBeenReached() {
+		int pillsLeft = medicationService.removePillsFromPillsLeft(100, 6L);
+		System.out.println(pillsLeft);
+		assertNotEquals(pillsLeft, 100);
+		
+	}
 	
+	@Test
+	public void test_IfPillsLeftDropsBelowCertainAmount_ItTriggersTheRefillReminder() {
+		boolean refill = medicationService.refillReminder(6, 1L);
+		assertEquals(refill, true);
+	}
 
 }
