@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Patient</title>
+<title>Edit Patient</title>
 </head>
 <body>
 	<h2>Editing patient ${patient.username}</h2>

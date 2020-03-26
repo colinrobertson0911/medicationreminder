@@ -78,7 +78,6 @@ class MedicationServiceTest {
 	@Test
 	public void test_ThatPillsLeftIsCalculatedOnceTimeToTakeHasBeenReached() {
 		int pillsLeft = medicationService.removePillsFromPillsLeft(100, 6L);
-		System.out.println(pillsLeft);
 		assertNotEquals(pillsLeft, 100);
 		
 	}

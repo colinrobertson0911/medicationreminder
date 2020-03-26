@@ -71,4 +71,10 @@ public class PatientController {
 		return modelAndView;
 	}
 	
+//	@PostMapping("MyServlet")
+//	public ModelAndView myServlet(@ModelAttribute("patient") Patient patient) {
+//		patientService.save(patient);
+//		System.err.println(patient);
+//		return new ModelAndView("forward:/MyMedication");
+//	}
 }

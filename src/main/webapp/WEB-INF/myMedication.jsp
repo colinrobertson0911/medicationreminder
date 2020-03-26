@@ -11,49 +11,44 @@
 	<h2>My Medication</h2>
 
 	<div>
+	<form action="${pageContext.request.contextPath}/myServlet"method="post">
+		<button type="submit" name="button" value="button1">Took my Pills</button>
+	</form>
 		<c:forEach items="${allMedication}" var="patient">
 			<div>
-				<label>Name: </label>
-				${patient.name}
+				<label>Name: </label> ${patient.name}
 			</div>
 			<div>
-				<label>Dosage: </label>
-				${patient.dosage}
+				<label>Dosage: </label> ${patient.dosage}
 			</div>
 			<div>
-				<label>Condition: </label>
-				${patient.condition}
+				<label>Condition: </label> ${patient.condition}
 			</div>
 			<div>
-				<label>Times A Week: </label>
-				${patient.timesAWeek}
+				<label>Times A Week: </label> ${patient.timesAWeek}
 			</div>
 			<div>
-				<label>Times A Day: </label>
-				${patient.timesADay}
+				<label>Times A Day: </label> ${patient.timesADay}
 			</div>
 			<div>
-				<label>Time To Take: </label>
-				${patient.timeToTake}
+				<label>Time To Take: </label> ${patient.timeToTake}
 			</div>
 			<div>
-				<label>Quantity: </label>
-				${patient.quantity}
+				<label>Quantity: </label> ${patient.quantity}
 			</div>
 			<div>
-				<label>Pills Left: </label>
-				${patient.pillsLeft}
+				<label>Pills Left: </label> ${patient.pillsLeft}
 			</div>
 			<div>
-				<label>Time to Refill</label>
-				${patient.refill}
+				<label>Time to Refill</label> ${patient.refill}
 			</div>
 			<div>
 				<p>---------------------</p>
 			</div>
-		
+			
 		</c:forEach>
+		
 	</div>
-	
+
 </body>
 </html>
