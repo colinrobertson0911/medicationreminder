@@ -9,7 +9,6 @@
 </head>
 <body>
 	<h2>Add a patient</h2>
-
 	<f:form method="post" action="AddPatientSubmit" modelAttribute="patient">
 		<div>
 			<f:label path="username">User name:</f:label>

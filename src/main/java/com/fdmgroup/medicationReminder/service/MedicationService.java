@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.fdmgroup.medicationReminder.model.Medication;
 import com.fdmgroup.medicationReminder.repository.MedicationDao;
 
-@Service
+@Service(value = "medicationService")
 public class MedicationService implements MedicationServiceRepository<Medication> {
 
 	@Autowired

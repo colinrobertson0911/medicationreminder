@@ -23,7 +23,7 @@ public class PatientServiceTest {
 
 	@Autowired
 	PatientService patientService;
-	
+
 	@Autowired
 	MedicationService medicationService;
 
@@ -60,21 +60,21 @@ public class PatientServiceTest {
 		Optional<Patient> patient = patientService.findByUsername("unknown");
 		assertTrue(patient.isEmpty());
 	}
-	
+
 	@Test
 	public void test_ThatAPatientCanBeEdited() {
 		Patient patient = patientService.findByUsername("pedro01").get();
 		patient.setWeight("90kg");
 		assertEquals("90kg", patient.getWeight());
 	}
-	
+
 	@Test
 	public void test_ThatAPatientsListOfMedicationCanBeRetrieved() {
 		Patient patient = patientService.findById(1L).get();
 		List<Medication> medication = medicationService.findAll();
 		patient.getMedication();
 		int numberOfMedication = medication.size();
-		assert(numberOfMedication > 0);
+		assert (numberOfMedication > 0);
 	}
 
 }

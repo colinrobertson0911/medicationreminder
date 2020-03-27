@@ -74,14 +74,14 @@ class MedicationServiceTest {
 		medication.setDosage("500mg");
 		assertEquals("500mg", medication.getDosage());
 	}
-	
+
 	@Test
 	public void test_ThatPillsLeftIsCalculatedOnceTimeToTakeHasBeenReached() {
 		int pillsLeft = medicationService.removePillsFromPillsLeft(100, 6L);
 		assertNotEquals(pillsLeft, 100);
-		
+
 	}
-	
+
 	@Test
 	public void test_IfPillsLeftDropsBelowCertainAmount_ItTriggersTheRefillReminder() {
 		boolean refill = medicationService.refillReminder(6, 1L);

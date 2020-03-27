@@ -9,7 +9,6 @@
 </head>
 <body>
 	<h2>Editing patient ${patient.username}</h2>
-
 	<f:form method="post" action="EditPatientSubmit" modelAttribute="patient">
 		<div>
 			<f:label path="username">User name:</f:label>

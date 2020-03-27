@@ -8,12 +8,9 @@
 <title>My Medication</title>
 </head>
 <body>
-	<h2>My Medication</h2>
-
+	<h2>My Medication</h2>	
 	<div>
-	<form action="${pageContext.request.contextPath}/myServlet"method="post">
-		<button type="submit" name="button" value="button1">Took my Pills</button>
-	</form>
+		
 		<c:forEach items="${allMedication}" var="patient">
 			<div>
 				<label>Name: </label> ${patient.name}
@@ -46,9 +43,8 @@
 				<p>---------------------</p>
 			</div>
 			
-		</c:forEach>
-		
+		</c:forEach>		
 	</div>
-
+	
 </body>
 </html>
