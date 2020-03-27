@@ -30,7 +30,7 @@ public class PatientServiceTest {
 	@Test
 	public void test_ThatAUserCanBeCreated() {
 		Patient patient = new Patient();
-		patient.setUsername("robbo");
+		patient.setUsername("robbo01");
 		patient.setPassword("password");
 		patient.setName("Colin");
 		patient.setWeight("81kg");
@@ -45,7 +45,7 @@ public class PatientServiceTest {
 
 	@Test
 	void test_FindByUsernameAndPasswordWhenUserExists() {
-		Patient patient = patientService.findByUsernameAndPassword("pedro01", "password").get();
+		Patient patient = patientService.findByUsernameAndPassword("pedro", "password").get();
 		assertEquals(1, patient.getPatientId());
 	}
 
@@ -63,7 +63,7 @@ public class PatientServiceTest {
 
 	@Test
 	public void test_ThatAPatientCanBeEdited() {
-		Patient patient = patientService.findByUsername("pedro01").get();
+		Patient patient = patientService.findByUsername("pedro").get();
 		patient.setWeight("90kg");
 		assertEquals("90kg", patient.getWeight());
 	}
