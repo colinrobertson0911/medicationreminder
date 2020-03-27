@@ -9,6 +9,8 @@
 </head>
 <body>
 	<h2>All Medication</h2>
+	<a href="Main" >Return To Main Page</a>
+	<p> </p>
 	<p>
 		<a href="AddMedication">Add new Medication</a>
 	</p>

@@ -10,7 +10,8 @@
 <body>
 	<h2>My Medication</h2>	
 	<div>
-		
+		<a href="Main" >Return To Main Page</a>
+		<p> </p>
 		<c:forEach items="${allMedication}" var="patient">
 			<div>
 				<label>Name: </label> ${patient.name}

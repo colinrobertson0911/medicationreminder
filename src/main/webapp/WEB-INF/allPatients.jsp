@@ -9,6 +9,8 @@
 </head>
 <body>
 	<h2>All Patients</h2>
+	<a href="Main" >Return To Main Page</a>
+	<p> </p>
 	<div>
 		<c:forEach items="${allPatients}" var="patient">
 			<div>

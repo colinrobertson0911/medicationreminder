@@ -68,5 +68,20 @@ public class LoginController {
 		session.invalidate();
 		return "home.jsp";
 	}
+	
+	@GetMapping("Main")
+	public ModelAndView main(@ModelAttribute("patient") Patient patient, HttpSession session) {
+		patient = (Patient) session.getAttribute(SESSION_ATTRIBUTE_USER);
+		Long patientId = patient.getPatientId();
+		patient = patientService.findById(patientId).get();
+		if (patient != null) {
+			LOGGER.warn("User {} logged out at {}", patient.getUsername(), LocalDateTime.now());
+			ModelAndView modelAndView = new ModelAndView("WEB-INF/main.jsp");
+			modelAndView.addObject("patient", patient);
+			return modelAndView;
+		}
+		session.invalidate();
+		return new ModelAndView("home.jsp");
+	}
 
 }

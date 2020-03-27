@@ -9,6 +9,8 @@
 </head>
 <body>
 	<h2>Editing Medication</h2>
+	<a href="Main" >Return To Main Page</a>
+	<p> </p>	
 	<f:form method="post" action="EditMedicationSubmit" modelAttribute="medication">
 		<div>
 			<f:label path="name">Medication Name: </f:label>

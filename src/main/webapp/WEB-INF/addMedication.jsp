@@ -8,6 +8,8 @@
 <title>Adding Medication</title>
 </head>
 <body>
+	<a href="Main" >Return To Main Page</a>
+	<p> </p>
 	<h2>Add Medication</h2>
 	<f:form method="post" action="AddMedicationSubmit" modelAttribute="medication">
 		<div>
